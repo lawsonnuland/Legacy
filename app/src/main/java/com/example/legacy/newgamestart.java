@@ -20,7 +20,7 @@ public class newgamestart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newgamestart);
-
+        /*
         TextView filetest = findViewById(R.id.textView3);
         try {
             FileInputStream fin = openFileInput("gamefile.txt");
@@ -39,7 +39,7 @@ public class newgamestart extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        */
 
     }
 }
