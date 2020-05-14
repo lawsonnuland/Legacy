@@ -19,14 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newGame(View view) {
-        try {
-            FileOutputStream newgame = openFileOutput("gamefile.txt", Context.MODE_PRIVATE);
-            String gout ="You are reading data from the file bitch";
-            newgame.write(gout.getBytes());
-            newgame.close();
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
+
         Intent newgame = new Intent(this, newgamestart.class);
         startActivity(newgame);
     }

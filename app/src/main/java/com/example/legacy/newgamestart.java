@@ -2,13 +2,17 @@ package com.example.legacy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
@@ -20,26 +24,24 @@ public class newgamestart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newgamestart);
-        /*
-        TextView filetest = findViewById(R.id.textView3);
+
+
+    }
+
+    public void pname(View view) {
+        EditText editText = (EditText) findViewById(R.id.inputname);
+        String playername = editText.getText().toString();
         try {
-            FileInputStream fin = openFileInput("gamefile.txt");
-            InputStreamReader readfile = new InputStreamReader(fin);
-            Scanner sc = new Scanner(readfile);
-            StringBuffer sb =new StringBuffer();
-
-            while (sc.hasNext()) {
-                sb.append(sc.nextLine());
-            }
-            filetest.setText(sb.toString());
-            readfile.close();
-
-        } catch (FileNotFoundException e) {
-            filetest.setText("Gump bump");
-        } catch (IOException e) {
-            e.printStackTrace();
+            FileOutputStream newgame = openFileOutput("gamefile.txt", Context.MODE_PRIVATE);
+            //String gout ="You are reading data from the file bitch";
+            newgame.write(playername.getBytes());
+            newgame.close();
+        } catch (Exception e) {
+            System.out.println("Error");
         }
-        */
+
+        Intent startgame = new Intent(this, Gamescreen.class);
+        startActivity(startgame);
 
     }
 }
