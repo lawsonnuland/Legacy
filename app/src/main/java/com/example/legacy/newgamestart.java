@@ -29,11 +29,12 @@ public class newgamestart extends AppCompatActivity {
     }
 
     public void pname(View view) {
+        //This reads the input of the players chosen name, and saves it to a file.
         EditText editText = (EditText) findViewById(R.id.inputname);
         String playername = editText.getText().toString();
         try {
             FileOutputStream newgame = openFileOutput("gamefile.txt", Context.MODE_PRIVATE);
-            //String gout ="You are reading data from the file bitch";
+
             newgame.write(playername.getBytes());
             newgame.close();
         } catch (Exception e) {

@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="pname"
-                android:text="Button" />
+                android:text="Continue" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
