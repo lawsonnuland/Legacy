@@ -3,17 +3,31 @@ package com.example.legacy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
 import java.util.Scanner;
 
 /* This is going to be the primary screen for gameplay. Read through for additional comments where
  appropriate.  */
 public class Gamescreen extends AppCompatActivity {
+    Random random = new Random();
+    int hp;
+    int attack;
+    int defense;
+    int magicAttack;
+    int magicDefend;
+    //Momentum is a measurement of the flow of combat. Keep it up, and you'll have an easier time.
+    int momentum;
+    // Level needs to get imported from save file. Work on that soon.
+    int level;
+
+    TextView filetest = findViewById(R.id.gametext);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +35,8 @@ public class Gamescreen extends AppCompatActivity {
         setContentView(R.layout.activity_gamescreen);
         String playername = "butts";
 
-        TextView filetest = findViewById(R.id.gametext);
+        int defense = 2;
+
         //This is the method for reading the players name from the saved file.
         try {
             FileInputStream fin = openFileInput("gamefile.txt");
@@ -44,6 +59,29 @@ public class Gamescreen extends AppCompatActivity {
         filetest.setText("Welcome to the arena " + playername + ".");
 
     }
+
+    public void startCombat() {
+        momentum = 0;
+        if (level ==1) {
+            goblin goblin =new goblin();
+            filetest.setText(goblin.intro);
+        }
+    }
+
+    public void attack(View view) {
+        int attackMod = attack + momentum + random.nextInt(6);
+        momentum += 1;
+
+    }
+
+    public void defend(View view) {
+
+    }
+
+    public void magic(View view) {
+
+    }
+
 
 
 }

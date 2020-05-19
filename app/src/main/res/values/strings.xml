@@ -99,4 +99,7 @@
 
     </string>
     <string name="action_settings">Settings</string>
+    <string name="attack_Action">Attack</string>
+    <string name="defend_Action">Defend</string>
+    <string name="magic_Action">Magic</string>
 </resources>
