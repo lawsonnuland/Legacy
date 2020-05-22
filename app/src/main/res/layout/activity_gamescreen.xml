@@ -8,6 +8,17 @@
     tools:context=".Gamescreen">
 
     <ProgressBar
+        android:id="@+id/hpBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="340dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        android:progressTint="#AF0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
+
+    <ProgressBar
         android:id="@+id/magicBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="340dp"
@@ -24,6 +35,7 @@
         android:layout_width="340dp"
         android:layout_height="47dp"
         android:layout_marginTop="32dp"
+        android:progressTint="#1A9E01"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,15 +126,5 @@
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button7" />
-
-    <ProgressBar
-        android:id="@+id/hpBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="340dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
