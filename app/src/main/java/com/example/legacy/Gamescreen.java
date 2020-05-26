@@ -3,6 +3,7 @@ package com.example.legacy;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,19 +15,7 @@ import java.util.Scanner;
 /* This is going to be the primary screen for gameplay. Read through for additional comments where
  appropriate.  */
 public class Gamescreen extends AppCompatActivity {
-    Random random = new Random();
-    int hp;
-    int hpMax;
-    int attack;
-    int defense;
-    int magicAttack;
-    int magicDefend;
-    //Momentum is a measurement of the flow of combat. Keep it up, and you'll have an easier time.
-    int momentum;
-    // Level needs to get imported from save file. Work on that soon.
-    int level;
-    goblin goblin =new goblin();
-    TextView filetest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,29 +48,55 @@ public class Gamescreen extends AppCompatActivity {
         }
         filetest.setText("Welcome to the arena " + playername + ".");
 
-
-
     }
 
-    public void updateText() {
+    Random random = new Random();
+    int hp = 30;
+    int hpMax = 30;
+    int mana = 10;
+    int manaMax = 10;
+    int attack;
+    int defense;
+    int magicAttack;
+    int magicDefend;
+    //Momentum is a measurement of the flow of combat. Keep it up, and you'll have an easier time.
+    public int momentum;
+    // Level needs to get imported from save file. Work on that soon.
+    int level;
+    boolean combat = false;
+    goblin goblin =new goblin();
+    String message;
 
+    public void updateText() {
+        TextView filetest = findViewById(R.id.gametext);
+        filetest.setText(goblin.intro);
     }
 
     public void startCombat() {
-        momentum = 0;
-        if (level ==1) {
-            filetest.setText(goblin.intro);
-        }
+       if (combat == false) {
+           momentum = 0;
+           ProgressBar hpBar = findViewById(R.id.hpBar);
+           hpBar.setMax(hpMax);
+           hpBar.incrementProgressBy(hp);
+           ProgressBar magicBar = findViewById(R.id.magicBar);
+           magicBar.setMax(manaMax);
+           magicBar.incrementProgressBy(mana);
+           combat = true;
+       }
     }
 
     public void attack(View view) {
-        filetest.setText("boobs");
+        startCombat();
         int attackMod = attack + momentum + random.nextInt(6);
         momentum += 1;
+        updateText();
+        ProgressBar momentumBar = findViewById(R.id.momentumBar);
+        momentumBar.incrementProgressBy(1);
     }
 
     public void defend(View view) {
-
+        ProgressBar momentumBar = findViewById(R.id.momentumBar);
+        momentumBar.incrementProgressBy(-1);
     }
 
     public void magic(View view) {
