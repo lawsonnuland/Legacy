@@ -11,16 +11,21 @@ public abstract class monster {
     int magicDefense;
     int physicalDefense;
     int goldDrop;
+    public void Attack() {
+
+    }
 }
 
 class minotaur extends monster {
-    String intro = "A large bullman, a minotaur, stands before you, holding 2 hatchets.";
-    int hp = 20;
-    int attackPhysical = 6;
-    int attackMagic = 2;
-    int magicDefense = 5;
-    int physicalDefense = 5;
-    int goldDrop = 15;
+    public minotaur() {
+        String intro = "A large bullman, a minotaur, stands before you, holding 2 hatchets.";
+        hp = 20;
+        attackPhysical = 6;
+        attackMagic = 2;
+        magicDefense = 5;
+        physicalDefense = 5;
+        goldDrop = 15;
+    }
 }
 
 class skeleton extends monster {
