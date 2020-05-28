@@ -16,6 +16,18 @@ public abstract class monster {
     }
 }
 
+class goblin extends monster {
+    public goblin() {
+        intro = "A little goblin stands before you, with an even littler knife.";
+        hp = 10;
+        attackPhysical = 3;
+        attackMagic = 2;
+        magicDefense = 2;
+        physicalDefense = 3;
+        goldDrop = 5;
+    }
+}
+
 class minotaur extends monster {
     public minotaur() {
         String intro = "A large bullman, a minotaur, stands before you, holding 2 hatchets.";
@@ -29,13 +41,15 @@ class minotaur extends monster {
 }
 
 class skeleton extends monster {
-    String intro = "At first you think a very thin man stands before you, but upon closer examination, its a skeleton!";
-    int hp = 5;
-    int attackPhysical = 7;
-    int attackMagic = 2;
-    int magicDefense = 2;
-    int physicalDefense = 10;
-    int goldDrop = 5;
+    public skeleton() {
+        String intro = "At first you think a very thin man stands before you, but upon closer examination, its a skeleton!";
+        int hp = 5;
+        int attackPhysical = 7;
+        int attackMagic = 2;
+        int magicDefense = 2;
+        int physicalDefense = 10;
+        int goldDrop = 5;
+    }
 }
 
 class bandit extends monster {

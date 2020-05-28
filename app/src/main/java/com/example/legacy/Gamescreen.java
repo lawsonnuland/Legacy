@@ -20,11 +20,8 @@ public class Gamescreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamescreen);
-        String playername = "butts";
-        int defense = 2;
-        level = 1;
+        String playername = "null";
         TextView filetest = findViewById(R.id.gametext);
-
 
         //This is the method for reading the players name from the saved file.
         try {
@@ -52,9 +49,9 @@ public class Gamescreen extends AppCompatActivity {
     Random random = new Random();
     //Momentum is a measurement of the flow of combat. Keep it up, and you'll have an easier time.
     // Level needs to get imported from save file. Work on that soon.
-    int level;
     boolean combat = false;
-    goblin goblin =new goblin();
+    boolean defending = false;
+    goblin Enemy =new goblin();
     String message;
     Player player = new Player();
 
@@ -63,17 +60,34 @@ public class Gamescreen extends AppCompatActivity {
         public int hpMax = 30;
         public int mana = 10;
         public int manaMax = 10;
-        public int attack;
-        public int defense;
-        public int magicAttack;
+        public int attack = 5;
+        public int defense = 2;
+        public int magicAttack = 7;
         public int magicDefend;
         public int momentum;
+        int level = 2;
     }
 
     public void updateText() {
         TextView filetest = findViewById(R.id.gametext);
-        filetest.setText(goblin.intro);
-        filetest.append(message);
+        if (player.hp > 1) {
+            if (defending) {
+                player.hp -= Enemy.attackPhysical;
+                player.hp += player.defense;
+                ProgressBar hpBar = findViewById(R.id.hpBar);
+                hpBar.incrementProgressBy(-Enemy.attackPhysical);
+                hpBar.incrementProgressBy(player.defense);
+            } else {
+                player.hp -= Enemy.attackPhysical;
+                ProgressBar hpBar = findViewById(R.id.hpBar);
+                hpBar.incrementProgressBy(-Enemy.attackPhysical);
+            }
+
+            filetest.setText(Enemy.intro);
+            filetest.append(message);
+        } else {
+            filetest.setText("You are dead. Maybe start a new game?");
+        }
     }
 
     public void startCombat() {
@@ -86,12 +100,23 @@ public class Gamescreen extends AppCompatActivity {
            ProgressBar magicBar = findViewById(R.id.magicBar);
            magicBar.setMax(player.manaMax);
            magicBar.incrementProgressBy(player.mana);
+           if (player.level == 1) {
+                goblin Enemy =new goblin();
+           } else if (player.level == 2) {
+                minotaur Enemy = new minotaur();
+           } else if (player.level == 3) {
+                skeleton Enemy = new skeleton();
+           } else {
+               message = " Too high or too low";
+           }
+
            combat = true;
        }
     }
 
     public void attack(View view) {
         startCombat();
+        defending = false;
         message = " You swing your blade!";
         int attackMod = player.attack + player.momentum + random.nextInt(6);
         player.momentum += 1;
@@ -102,6 +127,7 @@ public class Gamescreen extends AppCompatActivity {
 
     public void defend(View view) {
         message = " You defend!";
+        defending = true;
         ProgressBar momentumBar = findViewById(R.id.momentumBar);
         momentumBar.incrementProgressBy(-1);
         if (player.momentum >= 1) {
