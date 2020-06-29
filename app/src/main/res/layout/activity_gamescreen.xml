@@ -12,11 +12,11 @@
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:progressTint="#AF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button10" />
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
 
     <ProgressBar
         android:id="@+id/magicBar"
@@ -45,13 +45,14 @@
 
     <TextView
         android:id="@+id/gametext"
-        android:layout_width="360dp"
-        android:layout_height="263dp"
+        android:layout_width="359dp"
+        android:layout_height="251dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/belgrano"
         android:padding="4dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -95,38 +96,17 @@
         app:layout_constraintTop_toBottomOf="@+id/gametext" />
 
     <Button
-        android:id="@+id/button9"
-        style="@android:style/Widget.Holo.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
-
-    <Button
-        android:id="@+id/button10"
-        style="@android:style/Widget.Holo.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/button11"
-        app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
-
-    <Button
         android:id="@+id/button11"
         style="@android:style/Widget.Holo.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="343dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="Button"
+        android:onClick="quit"
+        android:text="Quit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

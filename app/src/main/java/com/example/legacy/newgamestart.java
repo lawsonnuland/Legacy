@@ -24,8 +24,6 @@ public class newgamestart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newgamestart);
-
-
     }
 
     public void pname(View view) {
@@ -34,9 +32,17 @@ public class newgamestart extends AppCompatActivity {
         String playername = editText.getText().toString();
         try {
             FileOutputStream newgame = openFileOutput("gamefile.txt", Context.MODE_PRIVATE);
-
             newgame.write(playername.getBytes());
             newgame.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+        //This creates a save file for the players level.
+        try {
+            FileOutputStream level = openFileOutput("playerstats.txt", Context.MODE_PRIVATE);
+            String playerLevel = "1";
+            level.write(playerLevel.getBytes());
+            level.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
